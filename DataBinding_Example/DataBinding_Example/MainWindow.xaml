@@ -1,0 +1,28 @@
+﻿<Window x:Class="DataBinding_Example.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DataBinding_Example"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800"
+        Loaded="Window_Loaded">
+    <!-- A fentebbi sor az ablak betöltésekor elindítja a WindowLoaded függvényt. -->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <!-- 
+            A Binding szó után beállítjuk az adatkötés tulajdonságait
+                - Path megadja, milyen értéket szeretnénk beállítani, így értelem szerűen a setterünkre mutat, ezzel elindítva az esemény sorozatot és természetesen az érték változás vizsgálatot.
+                - Mode Beállítja, hogy csak set-et vagy a get methodot is hazsnálni kell, itt a Tow way esetében olvassa és írja is, hiszen oda vissza kell működjön mind a két elemünkre.
+        -->
+            <TextBox x:Name="SzambevitelText" Grid.Row="0" Text="{Binding Path=OsszekotoSzam, Mode=TwoWay}" FontSize="50"></TextBox>
+        <Slider x:Name="SzambevitelSlide" Grid.Row="1" Value="{Binding Path=OsszekotoSzam, Mode=TwoWay}" ></Slider>
+        <Button x:Name="SzambevitelReset"  Grid.Row="2" FontSize="50" Click="Reset_Click">Reset</Button>
+        <Label x:Name="IdoText" Grid.Row="3" FontSize="50">0</Label>
+    </Grid>
+</Window>
